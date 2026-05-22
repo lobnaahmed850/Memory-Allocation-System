@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>960</width>
+    <height>776</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Memory Segmentation Simulator</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_main">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_setup">
+      <item>
+       <widget class="QGroupBox" name="grp_memory">
+        <property name="title">
+         <string>1. Memory Setup</string>
+        </property>
+        <layout class="QHBoxLayout" name="hl_memory">
+         <item>
+          <widget class="QLabel" name="lbl_totalMemory">
+           <property name="text">
+            <string>Total Memory Size (KB):</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spinBox_totalMemory">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>999999</number>
+           </property>
+           <property name="value">
+            <number>1024</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_setMemory">
+           <property name="text">
+            <string>Set Memory</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="grp_hole">
+        <property name="title">
+         <string>2. Add Initial Hole</string>
+        </property>
+        <layout class="QHBoxLayout" name="hl_hole">
+         <item>
+          <widget class="QLabel" name="lbl_holeStart">
+           <property name="text">
+            <string>Start Address:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spinBox_holeStart">
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>999999</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lbl_holeSize">
+           <property name="text">
+            <string>Size (KB):</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spinBox_holeSize">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>999999</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_addHole">
+           <property name="text">
+            <string>Add Hole</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="grp_process">
+      <property name="title">
+       <string>3. Add Process and Segments</string>
+      </property>
+      <layout class="QVBoxLayout" name="vl_process">
+       <item>
+        <layout class="QHBoxLayout" name="hl_processName">
+         <item>
+          <widget class="QLabel" name="lbl_processName">
+           <property name="text">
+            <string>Process Name:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_processName">
+           <property name="placeholderText">
+            <string>e.g. P1</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lbl_algorithm">
+           <property name="text">
+            <string>Algorithm:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rb_firstFit">
+           <property name="text">
+            <string>First-Fit</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rb_bestFit">
+           <property name="text">
+            <string>Best-Fit</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hl_segment">
+         <item>
+          <widget class="QLabel" name="lbl_segName">
+           <property name="text">
+            <string>Segment Name:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_segName">
+           <property name="placeholderText">
+            <string>e.g. Code</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lbl_segSize">
+           <property name="text">
+            <string>Size (KB):</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spinBox_segSize">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>999999</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_addSegment">
+           <property name="text">
+            <string>Add Segment</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hl_pendingAndButtons">
+         <item>
+          <widget class="QListWidget" name="listWidget_pendingSegments"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vl_actionButtons">
+           <item>
+            <widget class="QPushButton" name="btn_allocate">
+             <property name="text">
+              <string>Allocate Process</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_deallocate">
+             <property name="text">
+              <string>Deallocate Process</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_reset">
+             <property name="text">
+              <string>Reset</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_tables">
+      <item>
+       <widget class="QGroupBox" name="grp_holesTable">
+        <property name="title">
+         <string>Free Partitions (Holes)</string>
+        </property>
+        <layout class="QVBoxLayout">
+         <item>
+          <widget class="QTableWidget" name="tableWidget_holes">
+           <property name="editTriggers">
+            <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+           </property>
+           <attribute name="horizontalHeaderMinimumSectionSize">
+            <number>100</number>
+           </attribute>
+           <attribute name="horizontalHeaderDefaultSectionSize">
+            <number>200</number>
+           </attribute>
+           <column>
+            <property name="text">
+             <string>Start</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Size (KB)</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="grp_segmentTable">
+        <property name="title">
+         <string>Segment Table (Selected Process)</string>
+        </property>
+        <layout class="QVBoxLayout">
+         <item>
+          <widget class="QComboBox" name="comboBox_selectProcess"/>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="tableWidget_segmentTable">
+           <property name="editTriggers">
+            <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+           </property>
+           <attribute name="horizontalHeaderDefaultSectionSize">
+            <number>155</number>
+           </attribute>
+           <column>
+            <property name="text">
+             <string>Segment</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Base</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Size (KB)</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="grp_memoryView">
+      <property name="title">
+       <string/>
+      </property>
+      <layout class="QVBoxLayout">
+       <property name="spacing">
+        <number>4</number>
+       </property>
+       <property name="leftMargin">
+        <number>4</number>
+       </property>
+       <property name="topMargin">
+        <number>4</number>
+       </property>
+       <property name="rightMargin">
+        <number>4</number>
+       </property>
+       <property name="bottomMargin">
+        <number>4</number>
+       </property>
+       <item>
+        <widget class="QScrollArea" name="scrollArea_memory">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="widget_memoryCanvas">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>926</width>
+            <height>98</height>
+           </rect>
+          </property>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>960</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
