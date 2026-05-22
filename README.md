@@ -4,7 +4,7 @@ An interactive desktop application built using **C++** and the **Qt Framework** 
 
 ---
 
-## 📊 Features & Core Capabilities
+## Features & Core Capabilities
 * **Dual Allocation Engine:** Implements and compares **First-Fit** and **Best-Fit** placement algorithms.
 * **Atomic Two-Phase Allocation:** Validates the entire process entry list on a memory buffer before altering real memory states to guarantee an all-or-nothing configuration.
 * **Defragmentation via Hole Merging:** Automatically merges contiguous free fragments into a single larger block upon process removal.
